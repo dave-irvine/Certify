@@ -8,8 +8,14 @@ var Ber = require("asn1").Ber,// Actually need DER, but I can't find a lib for t
 createPublicKeyBuffer = function (keypair) {
 	// Keypair library gives us a regular RSA Public Key, we need just the base64 encoded section.
 	var keyArray = keypair.public.split("\n"),
-		keyString = keyArray.slice(1, keyArray.length - 2).join("");
+		keySlice = 1,
+		keyString;
 
+	while (keyArray[keyArray.length - keySlice] === "") {
+		keySlice++;
+	}
+
+	keyString = keyArray.slice(1, keyArray.length - keySlice).join("");
 	return new Buffer(keyString, "base64");
 };
 

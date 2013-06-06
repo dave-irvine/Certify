@@ -7,9 +7,15 @@
     "keypair": "0.0.5",
     "asn1": "0.1.11"
   },
+  "devDependencies": {
+    "mocha": "1.10.0"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/dave-irvine/Certify.git"
+  },
+  "scripts": {
+    "test": "mocha --reporter spec"
   },
   "author": {
     "name": "Dave Irvine",

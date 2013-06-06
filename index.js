@@ -1,4 +1,4 @@
-var Ber = require("asn1").Ber,
+var Ber = require("asn1").Ber,// Actually need DER, but I can't find a lib for this.
 	createPublicKeyBuffer,
 	getPublicKeyAndExponent,
 	Keypair = require("keypair"),
@@ -6,6 +6,7 @@ var Ber = require("asn1").Ber,
 	writePKCS1RSAHeader;
 
 createPublicKeyBuffer = function (keypair) {
+	// Keypair library gives us a regular RSA Public Key, we need just the base64 encoded section.
 	var keyArray = keypair.public.split("\n"),
 		keyString = keyArray.slice(1, keyArray.length - 2).join("");
 
@@ -31,6 +32,7 @@ getPublicKeyAndExponent = function (keyBuffer) {
 
 writePKCS1RSAHeader = function (writer) {
 	writer.startSequence();
+		// PKCS OID (http://www.oid-info.com/get/1.2.840.113549.1.1.1)
 		writer.writeOID("1.2.840.113549.1.1.1");
 		writer.writeNull();
 	writer.endSequence();
@@ -60,8 +62,9 @@ module.exports = function () {
 		writeKey(asnWriter, publicKey);
 	asnWriter.endSequence();
 
-	return ("-----BEGIN RSA PRIVATE KEY-----\r\n" +
+	// Re-attach the standard public key wrapper
+	return ("-----BEGIN RSA PUBLIC KEY-----\r\n" +
 			asnWriter.buffer.toString("base64") +
-			"\r\n-----END RSA PRIVATE KEY-----"
+			"\r\n-----END RSA PUBLIC KEY-----"
 	);
 };

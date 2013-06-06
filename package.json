@@ -1,20 +1,20 @@
 {
-	"name": "certify",
-	"version": "0.0.0",
-	"description": "Create X.509 ASN.1 RSA Keypairs",
-	"main": "index.js",
-	"dependencies": {
-		"keypair": "0.0.5",
-		"asn1": "0.1.11"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git://github.com/dave-irvine/Certify.git"
-	},
-	"author": {
-		"name": "Dave Irvine",
-		"email": "dave@daveirvine.me",
-		"url": "http://www.daveirvine.me"
-	},
-	"license": "MIT"
+  "name": "certify",
+  "version": "0.0.1",
+  "description": "Create X.509 ASN.1 RSA Keypairs",
+  "main": "index.js",
+  "dependencies": {
+    "keypair": "0.0.5",
+    "asn1": "0.1.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dave-irvine/Certify.git"
+  },
+  "author": {
+    "name": "Dave Irvine",
+    "email": "dave@daveirvine.me",
+    "url": "http://www.daveirvine.me"
+  },
+  "license": "MIT"
 }
